@@ -1,7 +1,6 @@
 import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
 import { NativeModules, StyleSheet, View, requireNativeComponent, Platform, Animated, Dimensions } from 'react-native';
-import Modal from 'react-native-root-modal';
 
 const SCREEN_HEIGHT = Dimensions.get('screen').height;
 const isIOS = Platform.OS === 'ios';
@@ -131,15 +130,13 @@ export default class extends Component {
 
         if (isIOS) {
             return (
-              <Modal style={styles.offSteam} visible={true}>
-                  <KeyboardView
-                    style={[styles.offSteam, transform && { transform }]}
-                    synchronouslyUpdateTransform={!!transform}
-                    {...props}
-                  >
-                      {childViews}
-                  </KeyboardView>
-              </Modal>
+                <KeyboardView
+                style={[styles.offSteam, transform && { transform }]}
+                synchronouslyUpdateTransform={!!transform}
+                {...props}
+                >
+                    {childViews}
+                </KeyboardView>
             );
         } else {
             return (
